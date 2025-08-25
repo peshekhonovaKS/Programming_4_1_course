@@ -1,0 +1,28 @@
+# -*- coding: cp1251 -*- 
+#дл€ работы кириллицы
+import matplotlib.pyplot as plt  #дл€ графиков переименовываем в plt дл€ удобства
+import numpy as np #работа с массивами данных
+xm = np.genfromtxt('file1.txt')
+xs = np.genfromtxt('file3.txt')
+ym = np.genfromtxt('file2.txt')
+Ln = np.genfromtxt("file4.txt")
+otrezok =np.genfromtxt("file0.txt")
+ys = np.genfromtxt('file5.txt')
+#fig, ax = plt.subplots() #создали пространство и оси
+def cm_to_inch(value): #функци€ дл€ того,чтобы можно было указывать размер графика
+    return value/2.54
+plt.figure(figsize=(cm_to_inch(21),cm_to_inch(15))) #укажем размер графика
+plt.grid(True)#сетка 
+plt.title('график функции f(x) и интерпол€ционного многочлена Ћагранжа',fontsize=15,fontweight="bold")
+#plt.plot(xn,y,color='red',label="f(x)")
+plt.plot(xs,ys,color='red',label="f(x)")
+#plt.plot(xm,ym,'ro')
+plt.plot(xm,ym,'ko') # o - это кружок, k - чЄрный цвет
+plt.plot(xs,Ln,color='blue',label="Ln(x)")
+plt.legend() #подпись f(x) и Ln(x)
+plt.xlabel('ќсь x',fontweight="bold") #подпишем оси
+plt.ylabel('ќсь y',fontweight="bold")
+plt.xlim(otrezok[0],otrezok[1]) #рисунок именно на нашем отрезке, без нул€ на графике, можно убрать
+#plt.xlim(xn[0],xn[N-1])  если так то нужно ввести N
+
+plt.show()
